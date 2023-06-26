@@ -26,4 +26,13 @@ RSpec.describe Student, type: :model do
       expect(student.to_s).to eq('Dwayne Johnson')
     end
   end
+  describe "GET /students/highest-grade" do
+    it 'returns the student with the highest grade' do
+      get '/students/highest-grade'
+
+      expect(response.body).to include_json({
+        first_name: 'Idris', last_name: 'Elba', grade: 105
+      })
+    end
+  end
 end
